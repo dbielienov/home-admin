@@ -1,0 +1,28 @@
+{
+	"name": "@repo/api",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"exports": {
+		"./db": "./index.ts",
+		"./schema": "./db/schema/index.ts"
+	},
+	"scripts": {
+		"build": "bun build ./index.ts --outdir ./dist --target node"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@neondatabase/serverless": "^1.0.2",
+		"dotenv": "^17.2.3",
+		"drizzle-orm": "^0.44.7",
+		"drizzle-zod": "^0.8.3",
+		"zod": "^4.1.12"
+	},
+	"devDependencies": {
+		"drizzle-kit": "^0.31.7",
+		"tsx": "^4.20.6"
+	}
+}

@@ -1,0 +1,11 @@
+{
+  "tailwindAttributes": ["className"],
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 120,
+  "bracketSpacing": true,
+  "useTabs": true
+}
