@@ -10,7 +10,6 @@ export default function ChatLayout() {
 	const [selectedChannelId, setSelectedChannelId] = useState('c1');
 	const [selectedThread, setSelectedThread] = useState<Message | null>(null);
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
 	return (
 		<div className="flex h-screen w-full overflow-hidden bg-white">
 			{/* Desktop Sidebar */}

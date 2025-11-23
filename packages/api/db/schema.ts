@@ -72,7 +72,7 @@ export type SelectAccountSchema = z.infer<typeof selectAccountSchema>;
 export type SelectSessionSchema = z.infer<typeof selectSessionSchema>;
 export type SelectVerificationSchema = z.infer<typeof selectVerificationSchema>;
 
-const insertUserSchema = createInsertSchema(user, {
+export const insertUserSchema = createInsertSchema(user, {
 	name: schema => schema.min(3).max(50),
 }).required({
 	name: true,
