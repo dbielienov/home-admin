@@ -2,6 +2,8 @@ import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db, schema } from '@repo/api/db';
 import { nextCookies } from 'better-auth/next-js';
+
+
 export const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true,

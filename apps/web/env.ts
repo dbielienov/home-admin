@@ -15,7 +15,6 @@ const EnvSchema = z.object({
 	DATABASE_URL: z.string(),
 	BETTER_AUTH_SECRET: z.string(),
 	BETTER_AUTH_URL: z.string(),
-	NEXT_PUBLIC_API_URL: z.string(),
 	GOOGLE_CLIENT_ID: z.string(),
 	GOOGLE_CLIENT_SECRET: z.string(),
 	DB_SCHEME: z.string(),
@@ -31,7 +30,10 @@ const EnvSchema = z.object({
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
 
-expand(config());
+
+expand(config({
+	path: './.env',
+}));
 
 try {
 	EnvSchema.parse(process.env);

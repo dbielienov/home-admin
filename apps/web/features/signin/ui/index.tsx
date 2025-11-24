@@ -6,37 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSeparator } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { signIn } from '@/server/auth/auth.service';
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
+import { useSigninForm } from '../model/use-signin';
 
-const formSchema = z.object({
-	email: z.string().min(5, 'Email must be at least 5 characters.').max(32, 'Email must be at most 32 characters.'),
-	password: z
-		.string()
-		.min(8, 'Password must be at least 8 characters.')
-		.max(100, 'Password must be at most 100 characters.'),
-});
 
 export function SigninForm({ className, ...props }: React.ComponentProps<'div'>) {
-	const form = useForm<z.infer<typeof formSchema>>({
-		resolver: zodResolver(formSchema),
-		mode: 'onBlur',
-		defaultValues: {
-			email: '',
-			password: '',
-		},
-	});
-
-	const signinHandler = async (values: z.infer<typeof formSchema>) => {
-		try {
-			await signIn(values);
-		} catch (err) {
-			toast.error('Error', { description: (err as Error).message });
-		}
-	};
+	 const { form, onSubmit } = useSigninForm();
 
 	return (
 		<div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -46,7 +20,7 @@ export function SigninForm({ className, ...props }: React.ComponentProps<'div'>)
 					<CardDescription>Login with your Apple or Google account</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<form onSubmit={form.handleSubmit(signinHandler)}>
+					<form onSubmit={form.handleSubmit(onSubmit)}>
 						<FieldGroup>
 							<Field>
 								<Button variant="outline" type="button">
