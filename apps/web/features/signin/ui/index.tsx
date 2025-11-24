@@ -9,11 +9,11 @@ import Link from 'next/link';
 import { useSigninForm } from '../model/use-signin';
 
 
-export function SigninForm({ className, ...props }: React.ComponentProps<'div'>) {
+export function SigninForm() {
 	 const { form, onSubmit } = useSigninForm();
 
 	return (
-		<div className={cn('flex flex-col gap-6', className)} {...props}>
+		<>
 			<Card>
 				<CardHeader className="text-center">
 					<CardTitle className="text-xl">Welcome back</CardTitle>
@@ -77,6 +77,6 @@ export function SigninForm({ className, ...props }: React.ComponentProps<'div'>)
 			<FieldDescription className="px-6 text-center">
 				By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
 			</FieldDescription>
-		</div>
+		</>
 	);
 }

@@ -4,9 +4,9 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from '@/components/ui
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 
-export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
+export function SignupForm() {
 	return (
-		<Card {...props}>
+		<Card>
 			<CardHeader>
 				<CardTitle>Create an account</CardTitle>
 				<CardDescription>Enter your information below to create your account</CardDescription>
