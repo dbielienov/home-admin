@@ -21,6 +21,7 @@ export const signUp = async ({ name, email, password }: { name: string; email: s
 		},
 	});
 };
+
 export async function signOut() {
 	await auth.api.signOut({
 		headers: await headers(),

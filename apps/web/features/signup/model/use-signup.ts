@@ -1,24 +1,27 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-import { signinSchema, type SigninValues } from './schema';
-import { signIn } from '@/server/auth/auth.service';
+import { signupSchema, type SignupValues } from './schema';
+import { signUp } from '@/server/auth/auth.service';
 import { useRouter } from 'next/navigation';
 
-export function useSigninForm() {
+export function useSignupForm() {
 	const router = useRouter();
-	const form = useForm<SigninValues>({
-		resolver: zodResolver(signinSchema),
+
+	const form = useForm<SignupValues>({
+		resolver: zodResolver(signupSchema),
 		mode: 'onBlur',
 		defaultValues: {
+			name: '',
 			email: '',
 			password: '',
+			confirmPassword: '',
 		},
 	});
 
-	const onSubmit = async (values: SigninValues) => {
+	const onSubmit = async (values: SignupValues) => {
 		try {
-			await signIn(values);
+			await signUp(values);
 			router.push('/');
 		} catch (err) {
 			toast.error('Error', { description: (err as Error).message });
