@@ -26,6 +26,7 @@ const EnvSchema = z.object({
 	DB_OPTIONS: z.string(),
 	DB_MIGRATING: stringBoolean,
 	DB_SEEDING: stringBoolean,
+	RESEND_API_KEY: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;

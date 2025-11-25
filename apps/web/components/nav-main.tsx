@@ -23,6 +23,10 @@ export function NavMain({
 	}[];
 }) {
 	const pathname = usePathname();
+	const sendEmail = async () => {
+		await fetch('/api/email', { method: 'POST' });
+	};
+
 	return (
 		<SidebarGroup>
 			<SidebarGroupContent className="flex flex-col gap-2">
@@ -35,7 +39,12 @@ export function NavMain({
 							<IconCirclePlusFilled />
 							<span>Quick Create</span>
 						</SidebarMenuButton>
-						<Button size="icon" className="size-8 group-data-[collapsible=icon]:opacity-0" variant="outline">
+						<Button
+							size="icon"
+							className="size-8 group-data-[collapsible=icon]:opacity-0 duration-200 ease-linear cursor-pointer hover:scale-110 active:scale-110"
+							variant="outline"
+							onClick={sendEmail}
+						>
 							<IconMail />
 							<span className="sr-only">Inbox</span>
 						</Button>

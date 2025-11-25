@@ -10,10 +10,11 @@ export default function ChatLayout() {
 	const [selectedChannelId, setSelectedChannelId] = useState('c1');
 	const [selectedThread, setSelectedThread] = useState<Message | null>(null);
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	// height h-screen - 48px
 	return (
-		<div className="flex h-screen w-full overflow-hidden bg-white">
+		<div className="flex h-[calc(100vh-65px)] w-full overflow-hidden bg-white">
 			{/* Desktop Sidebar */}
-			<div className="hidden md:block h-full w-64 shrink-0">
+			<div className="hidden md:block h-[calc(100vh-65px)] w-64 shrink-0">
 				<Sidebar selectedChannelId={selectedChannelId} onSelectChannel={setSelectedChannelId} />
 			</div>
 
