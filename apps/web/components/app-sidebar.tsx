@@ -13,6 +13,7 @@ import {
 	IconHelp,
 	IconInnerShadowTop,
 	IconListDetails,
+	IconMessageCircle,
 	IconReport,
 	IconSearch,
 	IconSettings,
@@ -42,8 +43,13 @@ const data = {
 	navMain: [
 		{
 			title: 'Dashboard',
-			url: '#',
+			url: '/',
 			icon: IconDashboard,
+		},
+		{
+			title: 'Chat',
+			url: '/chat',
+			icon: IconMessageCircle,
 		},
 		{
 			title: 'Lifecycle',
