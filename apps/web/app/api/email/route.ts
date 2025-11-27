@@ -1,9 +1,16 @@
 import { NextResponse } from 'next/server';
-import { sendEmail } from '@/server/email/email.service';
+import { sendWelcomeEmail } from '@/server/email/email.service';
 
-export async function POST() {
+export async function POST(request: Request) {
 	try {
-		await sendEmail()
+		const body = await request.json();
+		const { email, name } = body;
+
+		if (!email || !name) {
+			return NextResponse.json({ error: 'Email and name are required' }, { status: 400 });
+		}
+
+		await sendWelcomeEmail(email, name);
 		return NextResponse.json({ ok: true });
 	} catch (e) {
 		console.error(e);

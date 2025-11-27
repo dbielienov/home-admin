@@ -24,7 +24,13 @@ export function NavMain({
 }) {
 	const pathname = usePathname();
 	const sendEmail = async () => {
-		await fetch('/api/email', { method: 'POST' });
+		await fetch('/api/email', {
+			method: 'POST',
+			body: JSON.stringify({
+				email: 'test@gmail.com', // Keep the original email for testing
+				name: 'Test User',
+			}),
+		});
 	};
 
 	return (
