@@ -1,19 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
+import { rateLimit } from '@/lib/rate-limitter';
+
 
 export async function proxy(request: NextRequest) {
 	const sessionCookie = await auth.api.getSession({
 		headers: request.headers,
 	});
 
-	// THIS IS NOT SECURE!
-	// This is the recommended approach to optimistically redirect users
-	// We recommend handling auth checks in each page/route
 	if (!sessionCookie) {
 		return NextResponse.redirect(new URL('/signin', request.url));
 	}
-	return NextResponse.next();
+
+	return await rateLimit(request);
+
 }
 export const config = {
-	matcher: ['/'], // Specify the routes the middleware applies to
+	matcher: ['/'],
 };
